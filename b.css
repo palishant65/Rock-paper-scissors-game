@@ -1,7 +1,17 @@
 *{
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    min-height: 100%;
+    width: 100%;
+}
+body{
     text-align:center;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #111;
 }
 h1{
     background-color:#081b31;
@@ -9,52 +19,78 @@ h1{
     height:6rem;
     text-align:center;
     line-height:5rem;
-    
+    font-size:2rem;
 }
-.choice{
-    height:300x;
-    width:300px;
-    display:flex;
-    border-radius:50%;
-    justify-content:center;
-    align-items:center;
-
-}
-.choice:hover{
-    cursor:pointer;
-    background-color:#081b31;
-}
-img{
-    height:150px;
-    width:100x;
-    object-fit:cover;
-    border-radius:50%;
+.game-container {
+    width: min(100%, 1200px);
+    margin: 0 auto;
+    padding: 1.5rem 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
 }
 .choices{
     display:flex;
     justify-content:center;
     align-items:center;
-    margin-top:4rem;
-    gap:10rem;
-        
+    gap:3rem;
+    flex-wrap: wrap;
+    margin-top:1rem;
+}
+.choice{
+    width: 250px;
+    height: 250px;
+    display:flex;
+    border-radius:50%;
+    justify-content:center;
+    align-items:center;
+    background-color: #fff;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+.choice:hover{
+    cursor:pointer;
+    background-color:#081b31;
+}
+.choice:hover img{
+    transform: scale(1.03);
+}
+img{
+    height:150px;
+    width:150px;
+    object-fit:cover;
+    border-radius:50%;
+    transition: transform 0.2s ease;
 }
 .score-board{
     display:flex;
     justify-content:center;
     align-items:center;
     font-size:2rem;
-    margin-top:3rem;
     gap:5rem;
+    width: 100%;
+    max-width: 720px;
+}
+.score{
+    background-color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    min-width: 150px;
 }
 #User-Score , 
 #Computer-Score{
     font-size:4rem;
-
-
+    margin-bottom: 0.5rem;
+}
+.score p:last-child {
+    font-size:1rem;
+    margin-top: 0.25rem;
 }
 .message-container{
-    margin-top:5rem;
-
+    width: 100%;
+    max-width: 720px;
 }
 #msg{
     background-color:#081b31;
@@ -63,32 +99,126 @@ img{
     align-items:center;
     display:flex;
     font-size:2rem;
-    margin-top:5rem;
-    height:5rem;
-    display: inline;
+    margin:0 auto;
+    margin-top:0;
+    min-height:5rem;
     padding:1rem;
     border-radius:1rem;
+    width: 100%;
 }
 .round-display{
-    margin-top:2rem;
+    margin-top:0;
 }
 #round-number{
     font-size:2rem;
     color:#081b31;
+    margin: 0 auto;
 }
 .control-panel{
-    margin-top:2rem;
+    margin-top:0;
 }
 #new-game{
     font-size:1.2rem;
-    padding:0.75rem 1.5rem;
+    padding:0.85rem 1.75rem;
     border:none;
     border-radius:0.75rem;
     background-color:#081b31;
     color:white;
     cursor:pointer;
+    min-width: 180px;
 }
 #new-game:hover{
     opacity:0.9;
 }
-    
+@media (max-width: 992px) {
+    .choices {
+        gap: 2rem;
+    }
+    .choice {
+        width: 210px;
+        height: 210px;
+    }
+    img {
+        height: 130px;
+        width: 130px;
+    }
+    #User-Score, #Computer-Score {
+        font-size:3.5rem;
+    }
+}
+@media (max-width: 768px) {
+    h1 {
+        height:5rem;
+        line-height:4.5rem;
+        font-size:1.5rem;
+    }
+    .game-container {
+        padding: 1rem;
+        gap: 1.25rem;
+    }
+    .choices {
+        flex-direction: column;
+        gap: 1.25rem;
+        margin-top:0.75rem;
+    }
+    .choice {
+        width: 180px;
+        height: 180px;
+    }
+    img {
+        height: 110px;
+        width: 110px;
+    }
+    .score-board {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0;
+    }
+    .score {
+        width: 100%;
+        max-width: 420px;
+        padding: 0.9rem 1rem;
+    }
+    #User-Score, #Computer-Score {
+        font-size:3rem;
+    }
+    .score p:last-child {
+        font-size:0.95rem;
+    }
+    #round-number {
+        font-size:1.5rem;
+    }
+    #msg {
+        font-size:1.4rem;
+        min-height: 4.5rem;
+        padding: 0.9rem;
+    }
+    #new-game {
+        width: 100%;
+        max-width: 420px;
+        font-size:1rem;
+        padding:0.9rem 1rem;
+    }
+}
+@media (max-width: 480px) {
+    .choice {
+        width: 150px;
+        height: 150px;
+    }
+    img {
+        height: 95px;
+        width: 95px;
+    }
+    .score-board {
+        gap: 0.85rem;
+    }
+    #User-Score, #Computer-Score {
+        font-size:2.5rem;
+    }
+    #msg {
+        font-size:1.2rem;
+    }
+    h1 {
+        font-size:1.25rem;
+    }
+}
